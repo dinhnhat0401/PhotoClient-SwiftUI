@@ -34,7 +34,6 @@ public class SearchViewModel: ObservableObject, SearchViewModelProtocol, Identif
             return
         }
         service.searchImage(keyword).map { responseEntity in
-            print(responseEntity)
             return responseEntity.hits.map(SearchResultCellViewModel.init)
         }.receive(on: DispatchQueue.main).sink { [weak self] value in
             print(value)

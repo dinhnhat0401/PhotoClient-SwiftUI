@@ -28,6 +28,14 @@ public struct ImageEntity: Decodable {
     public let tags: String
 //    public let username: String
 
+    public init(previewURL: String, imageURL: String, imageWidth: UInt, imageHeight: UInt, tags: String) {
+        self.previewURL = previewURL
+        self.imageURL = imageURL
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
+        self.tags = tags
+    }
+
     enum CodingKeys: String, CodingKey {
         case imageURL = "webformatURL"
         case previewURL = "previewURL"

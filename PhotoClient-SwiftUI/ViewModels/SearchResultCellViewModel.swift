@@ -20,12 +20,14 @@ public final class SearchResultCellViewModel: SearchResultCellViewModelProtocol,
     public var imageWidth: UInt
     public var imageHeight: UInt
     public var previewURL: String
+    public var imageURL: String
     public var tags: String
 
-    init(imageEntity: ImageEntity) {
+    public init(imageEntity: ImageEntity) {
         self.imageWidth = imageEntity.imageWidth
         self.imageHeight = imageEntity.imageHeight
         self.previewURL = imageEntity.previewURL
+        self.imageURL = imageEntity.imageURL
         self.tags = imageEntity.tags
     }
 }

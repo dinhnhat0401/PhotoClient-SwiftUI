@@ -12,5 +12,6 @@ public protocol ImageDetailsViewModelProtocol {
 }
 
 public final class ImageDetailsViewModel: ImageDetailsViewModelProtocol {
-    
+//    public var previewURL: String
+
 }

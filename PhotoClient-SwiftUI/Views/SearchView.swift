@@ -43,7 +43,11 @@ extension SearchView {
 
     var searchResults: some View {
         Section {
-            ForEach(viewModel.datasource, content: SearchResultCell.init(viewModel:))
+            ForEach(viewModel.datasource) { searchResultCellViewModel in
+                NavigationLink(destination: ImageDetailsView(viewModel: searchResultCellViewModel)) {
+                    SearchResultCell(viewModel: searchResultCellViewModel)
+                }
+            }
         }
     }
 

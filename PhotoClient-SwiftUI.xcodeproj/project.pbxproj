@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84300A97270ECDFB0072DF59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84300A96270ECDFB0072DF59 /* Assets.xcassets */; };
 		84300A9A270ECDFB0072DF59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84300A99270ECDFB0072DF59 /* Preview Assets.xcassets */; };
 		84300AA4270ECDFC0072DF59 /* PhotoClient_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84300AA3270ECDFC0072DF59 /* PhotoClient_SwiftUITests.swift */; };
 		84300AAE270ECDFC0072DF59 /* PhotoClient_SwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84300AAD270ECDFC0072DF59 /* PhotoClient_SwiftUIUITests.swift */; };
@@ -38,6 +37,7 @@
 		84C5B3602711E54E00339119 /* libPhotoClientViewModels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C5B30A27115B3B00339119 /* libPhotoClientViewModels.a */; };
 		84C5B3612711E54E00339119 /* libPhotoClientViews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C5B31527115B5700339119 /* libPhotoClientViews.a */; };
 		84C5B3672712761000339119 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 84C5B3662712761000339119 /* NukeUI */; };
+		84C5B36B2712DCC200339119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84300A96270ECDFB0072DF59 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -550,8 +550,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C5B36B2712DCC200339119 /* Assets.xcassets in Resources */,
 				84300A9A270ECDFB0072DF59 /* Preview Assets.xcassets in Resources */,
-				84300A97270ECDFB0072DF59 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
