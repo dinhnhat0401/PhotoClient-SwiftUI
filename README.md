@@ -13,10 +13,10 @@
   </p>
 </p>
 
-<p align="row">
-<img src= "https://media.giphy.com/media/HYOlBKJBqgAfe/giphy.gif" width="400" >
-<img src= "https://media.giphy.com/media/HYOlBKJBqgAfe/giphy.gif" width="400" >
+<p align="center">
+  <img src= "https://user-images.githubusercontent.com/2002871/136699598-174aa157-4f06-4850-a3f6-d220af36732d.gif" width="200" >
 </p>
+
 
 ## Features
 
@@ -51,11 +51,11 @@ extension PixabayAPI {
 
 ## Contribute
 
-We would love you for the contribution to **YourLibraryName**, check the ``LICENSE`` file for more info.
+We would love you for the contribution to **PhotoClient-SwiftUI**, check the ``LICENSE`` file for more info.
 
 ## Meta
 
-Nate – [@DinhNha88577038](https://twitter.com/DinhNha88577038) – YourEmail@example.com
+Nate – [@DinhNha88577038](https://twitter.com/DinhNha88577038)
 
 Distributed under the APACHE license. See ``LICENSE`` for more information.
 
