@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import PhotoClientViewModels
+import NukeUI
 
 public struct SearchResultCell: View {
 
@@ -17,6 +18,8 @@ public struct SearchResultCell: View {
 
     public var body: some View {
         HStack {
+            LazyImage(source: viewModel.previewURL).frame(width: 200)
+            Spacer()
             VStack {
                 Text("\(viewModel.tags)")
                 Text("\(viewModel.imageWidth) x \(viewModel.imageHeight)")

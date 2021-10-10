@@ -29,7 +29,6 @@
 		84C5B3422711B06500339119 /* SearchImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B3402711B05F00339119 /* SearchImageService.swift */; };
 		84C5B3452711B0C200339119 /* ImageLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B3432711B0BC00339119 /* ImageLoaderService.swift */; };
 		84C5B3482711B2AF00339119 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B3462711B2AA00339119 /* Network.swift */; };
-		84C5B34B2711B3A300339119 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84C5B34A2711B3A300339119 /* Alamofire */; };
 		84C5B34D2711B89600339119 /* Pixabay+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B34C2711B89600339119 /* Pixabay+Config.swift */; };
 		84C5B3502711BC3500339119 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B34E2711BC3000339119 /* SearchResultCell.swift */; };
 		84C5B3532711C1ED00339119 /* PhotoClient_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84300A92270ECDE70072DF59 /* PhotoClient_SwiftUIApp.swift */; };
@@ -38,6 +37,7 @@
 		84C5B35F2711E54E00339119 /* libPhotoClientModels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C5B2F927113F7200339119 /* libPhotoClientModels.a */; };
 		84C5B3602711E54E00339119 /* libPhotoClientViewModels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C5B30A27115B3B00339119 /* libPhotoClientViewModels.a */; };
 		84C5B3612711E54E00339119 /* libPhotoClientViews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C5B31527115B5700339119 /* libPhotoClientViews.a */; };
+		84C5B3672712761000339119 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 84C5B3662712761000339119 /* NukeUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +187,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C5B34B2711B3A300339119 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C5B3672712761000339119 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +386,8 @@
 				84C5B3522711C1BD00339119 /* PBXTargetDependency */,
 			);
 			name = "PhotoClient-SwiftUI";
+			packageProductDependencies = (
+			);
 			productName = "PhotoClient-SwiftUI";
 			productReference = 84300A8F270ECDE70072DF59 /* PhotoClient-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -440,7 +442,6 @@
 			);
 			name = PhotoClientModels;
 			packageProductDependencies = (
-				84C5B34A2711B3A300339119 /* Alamofire */,
 			);
 			productName = PhotoClientModels;
 			productReference = 84C5B2F927113F7200339119 /* libPhotoClientModels.a */;
@@ -478,6 +479,9 @@
 				84C5B32127115B8E00339119 /* PBXTargetDependency */,
 			);
 			name = PhotoClientViews;
+			packageProductDependencies = (
+				84C5B3662712761000339119 /* NukeUI */,
+			);
 			productName = PhotoClientViews;
 			productReference = 84C5B31527115B5700339119 /* libPhotoClientViews.a */;
 			productType = "com.apple.product-type.library.static";
@@ -525,7 +529,7 @@
 			);
 			mainGroup = 84300A86270ECDE70072DF59;
 			packageReferences = (
-				84C5B3492711B3A300339119 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				84C5B3652712761000339119 /* XCRemoteSwiftPackageReference "NukeUI" */,
 			);
 			productRefGroup = 84300A90270ECDE70072DF59 /* Products */;
 			projectDirPath = "";
@@ -1106,21 +1110,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		84C5B3492711B3A300339119 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		84C5B3652712761000339119 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			repositoryURL = "https://github.com/kean/NukeUI";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84C5B34A2711B3A300339119 /* Alamofire */ = {
+		84C5B3662712761000339119 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84C5B3492711B3A300339119 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			package = 84C5B3652712761000339119 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
