@@ -21,14 +21,14 @@ public final class SearchImageService: SearchImageServiceProtocol {
     }
 
     public func searchImage(_ keyword: String) -> AnyPublisher<ResponseEntity, PhotoClientError> {
-        let urlString = path + "q=\(keyword)"
-        guard let url = URL(string: urlString) else {
+        let url = PixabayAPI.getSearchURL(keyword)
+        guard let url = url else {
             return Fail(error: PhotoClientError.setup(descritpion: "")).eraseToAnyPublisher()
         }
-        return URLSession.shared.publisher(for: url)
+        return URLSession.shared.publisher(for: url, responseType: ResponseEntity.self, decoder: JSONDecoder())
     }
 
     // MARK: private variables
 
-    private let path = PixabayAPI.apiURL
+//    private let path = PixabayAPI.apiURL
 }

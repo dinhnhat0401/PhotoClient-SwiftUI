@@ -8,6 +8,14 @@
 import Foundation
 
 public struct ResponseEntity: Decodable {
-    public let totalCount: Int64
-    public let images: [ImageEntity]
+    public let total: UInt
+    public let totalHits: UInt
+    public let hits: [ImageEntity]
+
+    enum CodingKeys: String, CodingKey {
+        case total = "total"
+        case hits = "hits"
+
+        case totalHits = "totalHits"
+    }
 }

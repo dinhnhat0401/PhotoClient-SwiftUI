@@ -19,9 +19,14 @@ extension URLSession {
         decoder: JSONDecoder = .init()
     ) -> AnyPublisher<T, PhotoClientError> {
         dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: NetworkResponse<T>.self, decoder: decoder)
-            .map(\.result)
+            .tryMap() { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200 else {
+                        throw URLError(.badServerResponse)
+                    }
+                return element.data
+                }
+            .decode(type: responseType, decoder: JSONDecoder())
             .mapError({ error in
                 PhotoClientError.setup(descritpion: error.localizedDescription)
             })

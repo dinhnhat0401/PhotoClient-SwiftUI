@@ -10,14 +10,31 @@ import Combine
 import UIKit
 
 internal struct PixabayAPI {
-    internal static let apiURL = "https://pixabay.com/api/"
 
-    internal static var requestParameters: [String: Any] {
+    internal static func getSearchURL(_ keyword: String) -> URL? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = scheme
+        urlComponents.host = host
+        urlComponents.path = path
+
+        urlComponents.queryItems = requestParameters.map { (key: String, value: Any) in
+            return URLQueryItem(name: key, value: value as? String)
+        }
+
+        urlComponents.queryItems?.append(URLQueryItem(name: "q", value: keyword))
+
+        return urlComponents.url
+    }
+
+    private static let scheme = "https"
+    private static let host = "pixabay.com"
+    private static let path = "/api/"
+    private static var requestParameters: [String: Any] {
         return [
             "key": Config.apiKey, // Fill with your own API key.
             "image_type": "photo",
-            "safesearch": true,
-            "per_page": 50,
+            "safesearch": "true",
+            "per_page": "50",
         ]
     }
 }

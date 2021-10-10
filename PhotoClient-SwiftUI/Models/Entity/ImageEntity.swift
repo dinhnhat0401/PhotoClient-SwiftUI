@@ -8,23 +8,31 @@
 import Foundation
 
 public struct ImageEntity: Decodable {
-    public let id: UInt64
+//    public let id: UInt64
 
-    public let pageURL: String
-    public let pageImageWidth: UInt
-    public let pageImageHeight: UInt
-
+//    public let pageURL: String
+//    public let pageImageWidth: UInt
+//    public let pageImageHeight: UInt
+//
     public let previewURL: String
-    public let previewWidth: Int
-    public let previewHeight: Int
+//    public let previewWidth: Int
+//    public let previewHeight: Int
 
     public let imageURL: String
     public let imageWidth: UInt
     public let imageHeight: UInt
 
-    public let viewCount: Int64
-    public let downloadCount: Int64
-    public let likeCount: Int64
+//    public let viewCount: Int64
+//    public let downloadCount: Int64
+//    public let likeCount: Int64
     public let tags: String
-    public let username: String
+//    public let username: String
+
+    enum CodingKeys: String, CodingKey {
+        case imageURL = "webformatURL"
+        case previewURL = "previewURL"
+        case imageWidth = "webformatWidth"
+        case imageHeight = "webformatHeight"
+        case tags = "tags"
+    }
 }

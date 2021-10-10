@@ -19,7 +19,7 @@ public struct SearchView: View {
             List {
                 searchField
 
-                if viewModel.datasource.isEmpty {
+                if $viewModel.datasource.isEmpty {
                     emptySection
                 } else {
                     detailsView
