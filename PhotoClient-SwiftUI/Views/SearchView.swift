@@ -43,11 +43,22 @@ extension SearchView {
 
     var searchResults: some View {
         Section {
-            ForEach(viewModel.datasource) { searchResultCellViewModel in
-                NavigationLink(destination: ImageDetailsView(viewModel: searchResultCellViewModel)) {
-                    SearchResultCell(viewModel: searchResultCellViewModel)
+            ScrollView {
+                LazyVStack {
+                    ForEach(viewModel.datasource) { searchResultCellViewModel in
+                        NavigationLink(destination: ImageDetailsView(viewModel: searchResultCellViewModel)) {
+                            SearchResultCell(viewModel: searchResultCellViewModel).onAppear {
+                                guard let lastId = viewModel.datasource.last?.id else {
+                                    return
+                                }
+                                if lastId == searchResultCellViewModel.id {
+                                    self.viewModel.loadMore()
+                                }
+                            }
+                        }
+                    }
                 }
-            }
+            }.frame(height: 300)
         }
     }
 

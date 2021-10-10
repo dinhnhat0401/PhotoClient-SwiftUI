@@ -11,7 +11,7 @@ import UIKit
 
 internal struct PixabayAPI {
 
-    internal static func getSearchURL(_ keyword: String) -> URL? {
+    internal static func getSearchURL(_ keyword: String, _ page: Int) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
@@ -22,6 +22,7 @@ internal struct PixabayAPI {
         }
 
         urlComponents.queryItems?.append(URLQueryItem(name: "q", value: keyword))
+        urlComponents.queryItems?.append(URLQueryItem(name: "page", value: String(page)))
 
         return urlComponents.url
     }
@@ -34,7 +35,7 @@ internal struct PixabayAPI {
             "key": Config.apiKey, // Fill with your own API key.
             "image_type": "photo",
             "safesearch": "true",
-            "per_page": "50",
+            "per_page": "5",
         ]
     }
 }

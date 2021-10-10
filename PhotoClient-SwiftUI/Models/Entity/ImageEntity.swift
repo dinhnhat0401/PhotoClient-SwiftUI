@@ -8,7 +8,7 @@
 import Foundation
 
 public struct ImageEntity: Decodable {
-//    public let id: UInt64
+    public let id: UInt
 
 //    public let pageURL: String
 //    public let pageImageWidth: UInt
@@ -28,7 +28,8 @@ public struct ImageEntity: Decodable {
     public let tags: String
 //    public let username: String
 
-    public init(previewURL: String, imageURL: String, imageWidth: UInt, imageHeight: UInt, tags: String) {
+    public init(id: UInt, previewURL: String, imageURL: String, imageWidth: UInt, imageHeight: UInt, tags: String) {
+        self.id = id
         self.previewURL = previewURL
         self.imageURL = imageURL
         self.imageWidth = imageWidth
@@ -37,6 +38,7 @@ public struct ImageEntity: Decodable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case imageURL = "webformatURL"
         case previewURL = "previewURL"
         case imageWidth = "webformatWidth"

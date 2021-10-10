@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 public protocol SearchImageServiceProtocol {
-    func searchImage(_ keyword: String) -> AnyPublisher<ResponseEntity, PhotoClientError>
+    func searchImage(_ keyword: String, _ page: Int) -> AnyPublisher<ResponseEntity, PhotoClientError>
 }
 
 public final class SearchImageService: SearchImageServiceProtocol {
@@ -20,8 +20,8 @@ public final class SearchImageService: SearchImageServiceProtocol {
 //        self.network = network
     }
 
-    public func searchImage(_ keyword: String) -> AnyPublisher<ResponseEntity, PhotoClientError> {
-        let url = PixabayAPI.getSearchURL(keyword)
+    public func searchImage(_ keyword: String, _ page: Int) -> AnyPublisher<ResponseEntity, PhotoClientError> {
+        let url = PixabayAPI.getSearchURL(keyword, page)
         guard let url = url else {
             return Fail(error: PhotoClientError.setup(descritpion: "")).eraseToAnyPublisher()
         }

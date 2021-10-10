@@ -33,10 +33,16 @@ public class SearchViewModel: ObservableObject, SearchViewModelProtocol, Identif
         guard let service = self.searchImageService else {
             return
         }
-        service.searchImage(keyword).map { responseEntity in
+        if loading {
+            return
+        }
+
+        loading = true
+        service.searchImage(keyword, self.page).map { responseEntity in
             return responseEntity.hits.map(SearchResultCellViewModel.init)
         }.receive(on: DispatchQueue.main).sink { [weak self] value in
             print(value)
+            self?.loading = false
             switch value {
             case .failure:
                 self?.datasource = []
@@ -44,8 +50,18 @@ public class SearchViewModel: ObservableObject, SearchViewModelProtocol, Identif
                 break
             }
         } receiveValue: { [weak self] results in
-            self?.datasource = results
+            self?.loading = false
+            if keyword == self?.keyword {
+                self?.datasource.append(contentsOf: results)
+            } else {
+                self?.datasource = results
+            }
         }.store(in: &disposables)
+    }
+
+    public func loadMore() {
+        self.page += 1
+        search(self.keyword)
     }
 
     // MARK: - private variables
@@ -53,4 +69,6 @@ public class SearchViewModel: ObservableObject, SearchViewModelProtocol, Identif
     private var searchImageService: SearchImageServiceProtocol?
     private var disposables = Set<AnyCancellable>()
     private let scheduler: DispatchQueue = DispatchQueue(label: "WeatherViewModel")
+    private var page = 1
+    private var loading = false
 }

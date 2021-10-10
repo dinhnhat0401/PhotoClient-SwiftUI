@@ -12,9 +12,10 @@ import PhotoClientViewModels
 
 struct ContentView: View {
     var body: some View {
-//        Text("Hello, world!")
-//            .padding()
-        SearchView(viewModel: searchViewModel)
+        NavigationView {
+            SearchView(viewModel: searchViewModel)
+                .navigationBarTitle("TOP")
+        }
     }
 }
 
@@ -23,5 +24,12 @@ let searchViewModel = SearchViewModel(SearchImageService())
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+
+        if #available(iOS 15.0, *) {
+            ContentView()
+                .previewInterfaceOrientation(.landscapeLeft)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }

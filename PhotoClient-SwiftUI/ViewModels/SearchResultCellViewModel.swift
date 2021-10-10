@@ -10,6 +10,7 @@ import UIKit
 import PhotoClientModels
 
 public protocol SearchResultCellViewModelProtocol {
+    var id: UInt { get }
     var imageWidth: UInt { get }
     var imageHeight: UInt { get }
     var previewURL: String { get }
@@ -17,6 +18,7 @@ public protocol SearchResultCellViewModelProtocol {
 }
 
 public final class SearchResultCellViewModel: SearchResultCellViewModelProtocol, Identifiable {
+    public var id: UInt
     public var imageWidth: UInt
     public var imageHeight: UInt
     public var previewURL: String
@@ -24,6 +26,7 @@ public final class SearchResultCellViewModel: SearchResultCellViewModelProtocol,
     public var tags: String
 
     public init(imageEntity: ImageEntity) {
+        self.id = imageEntity.id
         self.imageWidth = imageEntity.imageWidth
         self.imageHeight = imageEntity.imageHeight
         self.previewURL = imageEntity.previewURL

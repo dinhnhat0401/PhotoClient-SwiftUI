@@ -11,7 +11,11 @@ import SwiftUI
 struct PhotoClient_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GeometryReader { geometry in
+                VStack {
+                    ContentView()
+                }.frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            }
         }
     }
 }
