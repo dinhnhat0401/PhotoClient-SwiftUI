@@ -28,6 +28,7 @@
 ## TODOs
 
 - [ ] Unit tests
+- [ ] Describe project structure
 - [ ] Interaction in image details
 
 ## Requirements
