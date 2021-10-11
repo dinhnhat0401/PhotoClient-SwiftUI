@@ -19,7 +19,9 @@ struct ContentView: View {
     }
 }
 
-let searchViewModel = SearchViewModel(SearchImageService())
+let urlSession = URLSession.shared
+let network = Network(urlSession)
+let searchViewModel = SearchViewModel(SearchImageService(network))
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

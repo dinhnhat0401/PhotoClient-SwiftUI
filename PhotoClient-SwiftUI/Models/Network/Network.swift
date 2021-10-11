@@ -8,30 +8,40 @@
 import Foundation
 import Combine
 
-public protocol NetworkProtocol {
-//    associatedtype T: Decodable
-    func requestJSON(url: String, method: String, parameters: [String: Any]?) -> AnyPublisher<Any, NetworkError>
+public enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
 }
 
-public final class Network<T: Decodable>: NetworkProtocol {
-//    public typealias T = M: Decodable
+public protocol NetworkProtocol {
+    func request<T: Decodable>(url: URL, method: HTTPMethod, resultQueue: DispatchQueue) -> AnyPublisher<T, NetworkError>
+}
 
-    public init() { }
+public final class Network: NetworkProtocol {
+    public init(_ urlSesison: URLSession = URLSession.shared) {
+        self.urlSesison = urlSesison
+    }
 
-    public func requestJSON(url: String, method: String, parameters: [String: Any]?) -> AnyPublisher<Any, NetworkError> {
-        return URLSession.shared.dataTaskPublisher(for: URLRequest(url:URL(string: url)!))
-//            .map(\.data)
-//            .decode(type: T.self, decoder: JSONDecoder())
+    public func request<T: Decodable>(
+        url: URL,
+        method: HTTPMethod,
+        resultQueue: DispatchQueue = .main)-> AnyPublisher<T, NetworkError> {
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = method.rawValue
+        return self.urlSesison
+            .dataTaskPublisher(for: urlRequest)
+            .subscribe(on: queue)
+            .map(\.data)
+            .decode(type: T.self, decoder: JSONDecoder())
             .mapError({ error in
-                NetworkError.invalidResponse(description: error.localizedDescription)
+                NetworkError(error: error as NSError)
             })
-            .map({ output in
-                output.data
-            })
+            .receive(on: resultQueue)
             .eraseToAnyPublisher()
     }
 
     // MARK: - private variables
 
     private let queue = DispatchQueue(label: "photoclient.Network.Queue")
+    private var urlSesison: URLSession
 }

@@ -26,7 +26,6 @@
 		84C5B33D2711758000339119 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B33C2711758000339119 /* SearchView.swift */; };
 		84C5B33F2711758F00339119 /* ImageDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B33E2711758F00339119 /* ImageDetailsView.swift */; };
 		84C5B3422711B06500339119 /* SearchImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B3402711B05F00339119 /* SearchImageService.swift */; };
-		84C5B3452711B0C200339119 /* ImageLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B3432711B0BC00339119 /* ImageLoaderService.swift */; };
 		84C5B3482711B2AF00339119 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B3462711B2AA00339119 /* Network.swift */; };
 		84C5B34D2711B89600339119 /* Pixabay+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B34C2711B89600339119 /* Pixabay+Config.swift */; };
 		84C5B3502711BC3500339119 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B34E2711BC3000339119 /* SearchResultCell.swift */; };
@@ -151,7 +150,6 @@
 		84C5B33C2711758000339119 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		84C5B33E2711758F00339119 /* ImageDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsView.swift; sourceTree = "<group>"; };
 		84C5B3402711B05F00339119 /* SearchImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageService.swift; sourceTree = "<group>"; };
-		84C5B3432711B0BC00339119 /* ImageLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderService.swift; sourceTree = "<group>"; };
 		84C5B3462711B2AA00339119 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		84C5B34C2711B89600339119 /* Pixabay+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pixabay+Config.swift"; sourceTree = "<group>"; };
 		84C5B34E2711BC3000339119 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 				84C5B3302711664700339119 /* PixabayAPI.swift */,
 				84C5B34C2711B89600339119 /* Pixabay+Config.swift */,
 				84C5B3402711B05F00339119 /* SearchImageService.swift */,
-				84C5B3432711B0BC00339119 /* ImageLoaderService.swift */,
 				84C5B3462711B2AA00339119 /* Network.swift */,
 				84C5B3552711DF4300339119 /* URLSession+Publisher.swift */,
 			);
@@ -603,7 +600,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C5B34D2711B89600339119 /* Pixabay+Config.swift in Sources */,
-				84C5B3452711B0C200339119 /* ImageLoaderService.swift in Sources */,
 				84C5B32827115F0700339119 /* PhotoClientError.swift in Sources */,
 				84C5B3482711B2AF00339119 /* Network.swift in Sources */,
 				84C5B3322711664B00339119 /* PixabayAPI.swift in Sources */,

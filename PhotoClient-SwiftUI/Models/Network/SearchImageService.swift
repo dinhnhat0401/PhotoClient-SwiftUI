@@ -10,25 +10,21 @@ import Combine
 import UIKit
 
 public protocol SearchImageServiceProtocol {
-    func searchImage(_ keyword: String, _ page: Int) -> AnyPublisher<ResponseEntity, PhotoClientError>
+    func searchImage(_ keyword: String, _ page: Int) -> AnyPublisher<ResponseEntity, NetworkError>
 }
 
 public final class SearchImageService: SearchImageServiceProtocol {
-//    var network: NetworkProtocol
+    var network: NetworkProtocol
 
-    public init() {
-//        self.network = network
+    public init(_ network: NetworkProtocol) {
+        self.network = network
     }
 
-    public func searchImage(_ keyword: String, _ page: Int) -> AnyPublisher<ResponseEntity, PhotoClientError> {
+    public func searchImage(_ keyword: String, _ page: Int) -> AnyPublisher<ResponseEntity, NetworkError> {
         let url = PixabayAPI.getSearchURL(keyword, page)
         guard let url = url else {
-            return Fail(error: PhotoClientError.setup(descritpion: "")).eraseToAnyPublisher()
+            return Fail(error: NetworkError.NotReachedServer).eraseToAnyPublisher()
         }
-        return URLSession.shared.publisher(for: url, responseType: ResponseEntity.self, decoder: JSONDecoder())
+        return network.request(url: url, method: .get, resultQueue: .main)
     }
-
-    // MARK: private variables
-
-//    private let path = PixabayAPI.apiURL
 }
