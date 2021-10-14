@@ -17,12 +17,14 @@ public struct SearchResultCell: View {
     }
 
     public var body: some View {
-        HStack {
-            LazyImage(source: viewModel.previewURL).frame(width: 200)
-            Spacer()
-            VStack {
-                Text("\(viewModel.tags)")
-                Text("\(viewModel.imageWidth) x \(viewModel.imageHeight)")
+        GeometryReader { geometry in
+            HStack {
+                LazyImage(source: viewModel.previewURL).frame(width: geometry.size.width / 2)
+                Spacer()
+                VStack {
+                    Text("\(viewModel.tags)")
+                    Text("\(viewModel.imageWidth) x \(viewModel.imageHeight)")
+                }
             }
         }
     }

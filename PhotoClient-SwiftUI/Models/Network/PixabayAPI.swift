@@ -35,7 +35,7 @@ internal struct PixabayAPI {
             "key": Config.apiKey, // Fill with your own API key.
             "image_type": "photo",
             "safesearch": "true",
-            "per_page": "5",
+            "per_page": "50",
         ]
     }
 }

@@ -23,7 +23,12 @@ public struct SearchView: View {
                     emptySection
                 } else {
                     detailsView
-                    searchResults
+                    toggle
+                    if showGrid {
+                        searchResultGrid
+                    } else {
+                        searchResults
+                    }
                 }
             }
         }
@@ -32,6 +37,7 @@ public struct SearchView: View {
     // MARK: - private variables
 
     @ObservedObject private var viewModel: SearchViewModel
+    @State var showGrid = false
 }
 
 extension SearchView {
@@ -41,13 +47,19 @@ extension SearchView {
         }
     }
 
+    var toggle: some View {
+        Toggle("Show Grid", isOn: $showGrid.animation(.none)).toggleStyle(.switch)
+    }
+
     var searchResults: some View {
         Section {
             ScrollView {
                 LazyVStack {
                     ForEach(viewModel.datasource) { searchResultCellViewModel in
                         NavigationLink(destination: ImageDetailsView(viewModel: searchResultCellViewModel)) {
-                            SearchResultCell(viewModel: searchResultCellViewModel).onAppear {
+                            SearchResultCell(viewModel: searchResultCellViewModel)
+                                .frame(height: 100.0)
+                                .onAppear {
                                 guard let lastId = viewModel.datasource.last?.id else {
                                     return
                                 }
@@ -59,6 +71,26 @@ extension SearchView {
                     }
                 }
             }.frame(height: 300)
+        }
+    }
+
+    var searchResultGrid: some View {
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
+        return Section {
+            GeometryReader { geometry in
+                ScrollView {
+                    LazyVGrid(columns: columns) {
+                        ForEach(viewModel.datasource) { searchResultCellViewModel in
+                            NavigationLink(destination: ImageDetailsView(viewModel: searchResultCellViewModel)) {
+                                SearchResultCell(viewModel: searchResultCellViewModel).frame(width: (geometry.size.width - 50) / 2.0, height: 100, alignment: .center)
+                            }
+                        }
+                    }
+                }
+            }.frame(height: 400)
         }
     }
 
